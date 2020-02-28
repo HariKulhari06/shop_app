@@ -4,6 +4,7 @@ import 'package:shop_app/custom/badge.dart';
 import 'package:shop_app/providers/Cart.dart';
 import 'package:shop_app/providers/product.dart';
 import 'package:shop_app/providers/product_providers.dart';
+import 'package:shop_app/ui/app_drawer.dart';
 import 'package:shop_app/ui/cart/cart_screen.dart';
 import 'package:shop_app/ui/productOverview/product_item.dart';
 
@@ -61,6 +62,7 @@ class _ProductOverViewState extends State<ProductOverView> {
           ),
         ],
       ),
+      drawer: AppDrawer(),
       body: ProductGrids(showFav),
     );
   }

@@ -50,4 +50,9 @@ class Cart with ChangeNotifier {
     items.remove(id);
     notifyListeners();
   }
+
+  clear() {
+    _items = {};
+    notifyListeners();
+  }
 }
