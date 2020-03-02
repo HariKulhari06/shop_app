@@ -26,6 +26,9 @@ class CartListItem extends StatelessWidget {
           padding: EdgeInsets.only(right: 10),
         ),
         direction: DismissDirection.endToStart,
+        confirmDismiss: (direction) {
+          return askForConfirmation(context);
+        },
         onDismissed: (direction) {
           Provider.of<Cart>(context, listen: false).removeItem(_cartItem.id);
         },
@@ -43,6 +46,32 @@ class CartListItem extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<bool> askForConfirmation(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Are you sure?'),
+          content: Text('Are you sure to delete item from cart?'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('No'),
+              onPressed: () {
+                Navigator.of(context).pop(false);
+              },
+            ),
+            FlatButton(
+              child: Text('Yes'),
+              onPressed: () {
+                Navigator.of(context).pop(true);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
